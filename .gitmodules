@@ -1,0 +1,3 @@
+[submodule "suricate"]
+	path = suricate
+	url = https://github.com/engjoy/suricate

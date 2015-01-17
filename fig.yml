@@ -1,0 +1,20 @@
+frontend:
+  build: .
+  working_dir: /tmp/bin
+  command: python /tmp/frontend.py
+  links:
+   - mongo
+   - rabbit
+  ports:
+   - "8888:8888"
+execnode:
+  build: .
+  working_dir: /tmp/bin
+  command: python /tmp/execnode.py foo
+  links:
+   - mongo
+   - rabbit
+rabbit:
+  image: rabbitmq
+mongo:
+  image: dockerfile/mongodb
