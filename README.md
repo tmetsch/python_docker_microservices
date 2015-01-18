@@ -7,7 +7,7 @@ The tool [fig](http://www.fig.sh/index.html) allows for easy deployment of a
 Install docker & fig and just run *fig up* to get a single user development
 environment going.
 
-    $ sudo fig up
+    $ sudo fig up -d
     [...]
     $ sudo fig ps
                 Name                          Command               State           Ports          
