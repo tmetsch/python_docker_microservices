@@ -29,7 +29,7 @@ if __name__ == '__main__':
     # TODO: rather join right docker env vars which are set by docker links.
     mongo = os.environ['MONGO_PORT'].replace('tcp', 'mongodb')
     broker = os.environ['RABBIT_PORT'].replace('tcp', 'amqp')
-    time.sleep(1)  # TODO: check wait for rabbitmq to be up & running.
+    time.sleep(3)  # TODO: check wait for rabbitmq to be up & running.
     check_database(mongo)
     exec_node.ExecNode(mongo, broker, user)
   

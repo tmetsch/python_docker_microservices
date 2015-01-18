@@ -18,3 +18,5 @@ rabbit:
   image: rabbitmq
 mongo:
   image: dockerfile/mongodb
+  volumes:
+   - /tmp:/data/db
