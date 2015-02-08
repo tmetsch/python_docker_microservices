@@ -1,4 +1,4 @@
-pika
+pika==0.9.12
 bottle
 pymongo
 mpld3
