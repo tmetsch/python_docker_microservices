@@ -3,6 +3,7 @@ import os
 import pymongo
 import sys
 import time
+import urlparse
 
 from suricate.analytics import exec_node
 
@@ -28,8 +29,10 @@ if __name__ == '__main__':
     user = sys.argv[1]
     # TODO: rather join right docker env vars which are set by docker links.
     mongo = os.environ['MONGO_PORT'].replace('tcp', 'mongodb')
-    broker = os.environ['RABBIT_PORT'].replace('tcp', 'amqp')
+    tmp = urlparse.urlparse(os.environ['RABBIT_PORT'])
+    broker = 'amqp://guest:guest@{}:{}/%2f'.format(tmp.hostname, tmp.port)
+    
     time.sleep(3)  # TODO: check wait for rabbitmq to be up & running.
     check_database(mongo)
     exec_node.ExecNode(mongo, broker, user)
-  
+

@@ -2,6 +2,7 @@
 import bottle
 import os
 import sys
+import urlparse
 
 from suricate.ui import ui_app
 
@@ -23,7 +24,8 @@ class SessionMiddleWare(object):
 if __name__ == '__main__':
     # TODO: rather join right docker env vars which are set by docker links.
     mongo = os.environ['MONGO_PORT'].replace('tcp', 'mongodb')
-    broker = os.environ['RABBIT_PORT'].replace('tcp', 'amqp')
+    tmp = urlparse.urlparse(os.environ['RABBIT_PORT'])
+    broker = 'amqp://guest:guest@{}:{}/%2f'.format(tmp.hostname, tmp.port)
 
     app = ui_app.AnalyticsApp(mongo, broker).get_wsgi_app()
     app = SessionMiddleWare(app)
