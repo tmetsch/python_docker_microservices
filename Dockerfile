@@ -3,7 +3,7 @@ MAINTAINER engjoy UG (haftungsbeschraenkt)
 
 # dependecies
 RUN apt-get update
-RUN apt-get install -y python python-dev python-distribute python-pip python-matplotlib
+RUN apt-get install -y python python-dev python-distribute python-pip python-matplotlib python-pandas
 
 # deploy suricate
 ADD /misc /tmp/
