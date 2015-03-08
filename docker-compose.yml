@@ -2,6 +2,9 @@ frontend:
   build: .
   working_dir: /tmp/bin
   command: python /tmp/frontend.py
+  mem_limit: 128m
+  cpu_shares: 512
+  dns: 8.8.8.8
   links:
    - mongo
    - rabbit
@@ -11,6 +14,8 @@ execnode:
   build: .
   working_dir: /tmp/bin
   command: python /tmp/execnode.py foo
+  mem_limit: 64m
+  cpu_shares: 128 
   links:
    - mongo
    - rabbit
