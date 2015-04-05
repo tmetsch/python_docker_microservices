@@ -1,6 +1,5 @@
 frontend:
   build: .
-  working_dir: /tmp/bin
   command: python /tmp/frontend.py
   mem_limit: 128m
   cpu_shares: 512
