@@ -22,11 +22,12 @@ def check_database(uri):
 
 
 if __name__ == '__main__':
-    if len(sys.argv) < 2:
-        raise AttributeError('please provide a tenant id for this execution '
-                             'node as first argument!')
+    if len(sys.argv) < 3:
+        raise AttributeError('please provide the path to the sdk and a tenant '
+                             'id for this execution node as arguments!')
 
-    user = sys.argv[1]
+    sdk = sys.argv[1]
+    user = sys.argv[2]
     # TODO: rather join right docker env vars which are set by docker links.
     mongo = os.environ['MONGO_PORT'].replace('tcp', 'mongodb')
     tmp = urlparse.urlparse(os.environ['RABBIT_PORT'])
@@ -34,5 +35,5 @@ if __name__ == '__main__':
     
     time.sleep(3)  # TODO: check wait for rabbitmq to be up & running.
     check_database(mongo)
-    exec_node.ExecNode(mongo, broker, user)
+    exec_node.ExecNode(mongo, broker, sdk, user)
 
