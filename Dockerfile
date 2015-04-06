@@ -12,4 +12,5 @@ ADD /suricate /tmp
 RUN pip install -r /tmp/requirements.txt
 
 # install
-RUN cd tmp && python setup.py install && cd ..
+WORKDIR /tmp
+RUN python setup.py install

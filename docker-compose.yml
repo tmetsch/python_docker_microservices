@@ -11,8 +11,7 @@ frontend:
    - "8888:8888"
 execnode:
   build: .
-  working_dir: /tmp/bin
-  command: python /tmp/execnode.py foo
+  command: python /tmp/execnode.py /tmp/bin/sdk.py foo
   mem_limit: 64m
   cpu_shares: 128 
   links:
