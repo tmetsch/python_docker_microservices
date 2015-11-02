@@ -20,6 +20,6 @@ execnode:
 rabbit:
   image: rabbitmq
 mongo:
-  image: dockerfile/mongodb
+  image: mongo
   volumes:
-   - /tmp:/data/db
+   - /tmp/suricate:/data/db
